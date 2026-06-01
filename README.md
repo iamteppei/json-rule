@@ -165,6 +165,12 @@ JaCoCo rules currently enforce:
 - Line coverage >= 60%
 - Branch coverage >= 40%
 
+## Community and Governance
+
+- Code of Conduct: see [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+- Security Policy: see [SECURITY.md](SECURITY.md)
+- License: see [LICENSE](LICENSE)
+
 ## Contributing
 
 Contributions are welcome.
@@ -177,4 +183,4 @@ Contributions are welcome.
 
 ## License
 
-Apache License 2.0. See LICENSE for details.
+This project is licensed under Apache License 2.0. See [LICENSE](LICENSE) for details.
