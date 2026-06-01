@@ -97,4 +97,4 @@ jobs:
           mvn -B -ntp versions:set -DnewVersion="${VERSION}" -DgenerateBackupPoms=false
 
       - name: Publish artifacts
-        run: mvn -B -ntp -P clean release deploy -DskipTests
+        run: mvn -B -ntp -P release deploy -DskipTests
