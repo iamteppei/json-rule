@@ -6,6 +6,12 @@ import java.io.Serial;
 import java.util.*;
 import java.util.function.BiPredicate;
 
+/**
+ * A single rule condition represented as a small tuple-like list.
+ *
+ * <p>The first element is an operator name, and the second element is the expected value
+ * when required by the operator.</p>
+ */
 public final class Condition extends ArrayList<Object> implements Predicate {
 
     public static final String EQ_RULE = "eq";
@@ -79,6 +85,9 @@ public final class Condition extends ArrayList<Object> implements Predicate {
         opMap.put(IS_NULL_RULE, new IsNullPredicate());
     }
 
+    /**
+     * Creates an empty condition with initial capacity for operator and expected value.
+     */
     public Condition() {
         super(2);
     }
@@ -94,6 +103,14 @@ public final class Condition extends ArrayList<Object> implements Predicate {
         return null;
     }
 
+    /**
+     * Adds an operator or expected value to the condition.
+     *
+     * <p>The first value must be a supported operator string. At most two values can be stored.</p>
+     *
+     * @param value operator or expected value
+     * @return true when the value is accepted, otherwise false
+     */
     @Override
     public boolean add(Object value) {
         if (isEmpty()) {
@@ -107,6 +124,12 @@ public final class Condition extends ArrayList<Object> implements Predicate {
         return super.add(value);
     }
 
+    /**
+     * Evaluates this condition against the provided value.
+     *
+     * @param value actual input value
+     * @return true when evaluation succeeds, otherwise false
+     */
     @Override
     public boolean test(Object value) {
         final BiPredicate<Object, Object> predicate = opMap.get(getOperatorName());

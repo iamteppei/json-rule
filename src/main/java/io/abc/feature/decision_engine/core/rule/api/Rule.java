@@ -6,6 +6,9 @@ import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
+/**
+ * A parsed rule node that can contain nested property predicates and logical groups.
+ */
 public final class Rule implements Predicate {
 
     public static final String ANY_KEY = "$any";
@@ -15,6 +18,11 @@ public final class Rule implements Predicate {
     private final Map<String, Predicate> predicateMap = new HashMap<>();
     private final String root;
 
+    /**
+     * Creates a rule node with a logical root path used for diagnostics.
+     *
+     * @param root logical path for this rule node
+     */
     public Rule(String root) {
         this.root = root;
     }
@@ -27,22 +35,50 @@ public final class Rule implements Predicate {
         logger.debug("<<< [{}] checking FAILED", String.join(".", root, key));
     }
 
+    /**
+     * Adds a leaf condition bound to a property name.
+     *
+     * @param property property key
+     * @param condition condition to evaluate
+     */
     public void withCondition(String property, Condition condition) {
         predicateMap.put(property, condition);
     }
 
+    /**
+     * Adds a nested rule bound to a property name.
+     *
+     * @param property property key
+     * @param rule nested rule
+     */
     public void withRule(String property, Rule rule) {
         predicateMap.put(property, rule);
     }
 
+    /**
+     * Adds an all-match logical group for child rules.
+     *
+     * @param rules child rules that must all pass
+     */
     public void withAllRules(List<Rule> rules) {
         predicateMap.put(ALL_KEY, new AllRule<>(rules));
     }
 
+    /**
+     * Adds an any-match logical group for child rules.
+     *
+     * @param rules child rules where any pass is sufficient
+     */
     public void withAnyRules(List<Rule> rules) {
         predicateMap.put(ANY_KEY, new AnyRule<>(rules));
     }
 
+    /**
+     * Evaluates this rule against a map or collection input.
+     *
+     * @param value map or collection input
+     * @return true when all configured checks for this node pass
+     */
     @Override
     public boolean test(Object value) {
         if (value instanceof Map<?, ?> valueMap) {
