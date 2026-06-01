@@ -77,7 +77,7 @@ public final class Rule implements Predicate {
      * Evaluates this rule against a map or collection input.
      *
      * @param value map or collection input
-     * @return true when all configured checks for this node pass
+     * @return {@code true} when all configured checks for this node pass
      */
     @Override
     public boolean test(Object value) {

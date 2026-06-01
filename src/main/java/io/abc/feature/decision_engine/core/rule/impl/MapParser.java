@@ -13,8 +13,18 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Parses JSON content into nested Java map and list structures.
+ */
 public class MapParser {
 
+    /**
+     * Parses JSON text to a map.
+     *
+     * @param jsonContent input JSON text
+     * @return parsed map representation.
+     * @throws ParserException when parsing fails
+     */
     public Map<String, Object> parse(String jsonContent) {
         try (final com.squareup.moshi.JsonReader reader = com.squareup.moshi.JsonReader.of(Okio.buffer(Okio.source(new ByteArrayInputStream(jsonContent.getBytes(StandardCharsets.UTF_8)))))) {
             return parseMap(reader);

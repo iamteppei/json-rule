@@ -9,7 +9,7 @@ public interface Predicate {
      * Evaluates the input value.
      *
      * @param value input value to evaluate
-     * @return true when the value satisfies this predicate, otherwise false
+     * @return {@code true} when the value satisfies this predicate, otherwise false
      */
     boolean test(Object value);
 }

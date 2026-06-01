@@ -3,14 +3,17 @@ package io.abc.feature.decision_engine.core.rule.impl;
 import java.util.Collection;
 import java.util.function.BiPredicate;
 
+/**
+ * Checks whether the source value is present in the expected collection.
+ */
 public class InPredicate implements BiPredicate<Object, Object> {
 
     /**
-     * Whether the source object is in the expectedValue
+     * Evaluates membership.
      *
-     * @param source        the source value
-     * @param expectedValue the expected list of value
-     * @return true if the expectedValue contains the source value
+     * @param source source value
+     * @param expectedValue expected collection of values
+     * @return {@code true} when expectedValue contains source
      */
     @Override
     public boolean test(Object source, Object expectedValue) {

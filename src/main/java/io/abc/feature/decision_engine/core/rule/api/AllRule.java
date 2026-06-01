@@ -29,7 +29,7 @@ public final class AllRule<E extends Predicate> implements Predicate {
      * value, each item in the collection must satisfy all predicates.</p>
      *
      * @param value map or collection to evaluate
-     * @return true when all checks pass, otherwise false
+     * @return {@code true} when all checks pass, otherwise false
      */
     @Override
     public boolean test(Object value) {

@@ -13,7 +13,7 @@ public final class Expression {
         * Whether a value is an expression. Example ${key1.key2}.
      *
      * @param value the value
-     * @return true if value is an expression
+     * @return {@code true} if value is an expression
      */
     public static boolean isExpression(Object value) {
         if (value instanceof String stringValue) {
@@ -33,7 +33,7 @@ public final class Expression {
      * <p>For input ${ key1.key2 }, this method returns key1.key2.</p>
      *
      * @param value the expression token
-     * @return trimmed expression body, or null when input is not an expression
+     * @return trimmed expression body, or {@code null} when input is not an expression.
      */
     public static String getExpression(Object value) {
         if (value instanceof String stringValue && isExpression(stringValue)) {
