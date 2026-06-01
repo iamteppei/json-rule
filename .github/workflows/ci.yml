@@ -40,8 +40,8 @@ jobs:
       - name: Compile
         run: mvn -B -ntp clean compile
 
-      - name: Run unit tests
-        run: mvn -B -ntp test
+      - name: Run unit tests and coverage check
+        run: mvn -B -ntp verify
 
       - name: Sonar scan
         if: ${{ env.SONAR_TOKEN != '' && env.SONAR_PROJECT_KEY != '' }}
