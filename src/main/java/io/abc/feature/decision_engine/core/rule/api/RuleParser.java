@@ -9,10 +9,20 @@ import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
+/**
+ * Parses JSON rule definitions into executable {@link Rule} instances.
+ */
 public final class RuleParser {
 
     private static final String ROOT = "$";
 
+    /**
+     * Parses a JSON rule document.
+     *
+     * @param jsonRule rule document in JSON format
+     * @return parsed rule tree
+     * @throws ParserException when input is invalid or parsing fails
+     */
     public Rule parse(String jsonRule) throws ParserException {
         try (final JsonReader reader = JsonReader.of(Okio.buffer(Okio.source(new ByteArrayInputStream(jsonRule.getBytes(StandardCharsets.UTF_8)))))) {
             return parseRule(ROOT, reader);
