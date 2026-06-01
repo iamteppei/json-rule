@@ -29,7 +29,7 @@ public final class AnyRule<E extends Predicate> implements Predicate {
      * at least one item in the collection must satisfy the configured predicates.</p>
      *
      * @param value map or collection to evaluate
-     * @return true when any applicable check passes, otherwise false
+     * @return {@code true} when any applicable check passes, otherwise false
      */
     @Override
     public boolean test(Object value) {

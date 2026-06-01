@@ -109,7 +109,7 @@ public final class Condition extends ArrayList<Object> implements Predicate {
      * <p>The first value must be a supported operator string. At most two values can be stored.</p>
      *
      * @param value operator or expected value
-     * @return true when the value is accepted, otherwise false
+     * @return {@code true} when the value is accepted, otherwise false
      */
     @Override
     public boolean add(Object value) {
@@ -128,7 +128,7 @@ public final class Condition extends ArrayList<Object> implements Predicate {
      * Evaluates this condition against the provided value.
      *
      * @param value actual input value
-     * @return true when evaluation succeeds, otherwise false
+     * @return {@code true} when evaluation succeeds, otherwise false
      */
     @Override
     public boolean test(Object value) {
